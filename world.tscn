@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://di6715pjxek7i"]
+
+[ext_resource type="Script" path="res://Godot.gd" id="1_y8dbt"]
+[ext_resource type="Texture2D" uid="uid://d1gb5pwv4yq8l" path="res://icon.svg" id="2_xy0k0"]
+[ext_resource type="Texture2D" uid="uid://dgqggkllpdqh6" path="res://AnimationSheet_Character.png" id="3_xi6d7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2q3n"]
+size = Vector2(1166, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_up7p6"]
+size = Vector2(39, 79)
+
+[sub_resource type="Animation" id="Animation_a5f18"]
+resource_name = "Idle"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2559),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_4xupl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_fiomr"]
+resource_name = "Walking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_575rg"]
+_data = {
+"Idle": SubResource("Animation_a5f18"),
+"RESET": SubResource("Animation_4xupl"),
+"Walking": SubResource("Animation_fiomr")
+}
+
+[node name="World" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(582.5, 582)
+scale = Vector2(9.10156, 1.125)
+texture = ExtResource("2_xy0k0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(583, 581)
+shape = SubResource("RectangleShape2D_c2q3n")
+
+[node name="Godot" type="CharacterBody2D" parent="."]
+script = ExtResource("1_y8dbt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Godot"]
+position = Vector2(180.5, 462)
+shape = SubResource("RectangleShape2D_up7p6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Godot"]
+position = Vector2(183, 459)
+scale = Vector2(2.95312, 2.8214)
+texture = ExtResource("3_xi6d7")
+hframes = 8
+vframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Godot"]
+libraries = {
+"": SubResource("AnimationLibrary_575rg")
+}
