@@ -1,11 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://di6715pjxek7i"]
+[gd_scene load_steps=25 format=3 uid="uid://di6715pjxek7i"]
 
 [ext_resource type="Script" path="res://ScriptFolder/CharacterArrow.gd" id="1_2ivnq"]
 [ext_resource type="Texture2D" uid="uid://bvtq5pfjk2wsw" path="res://Assets/factory.png" id="2_bc1bn"]
 [ext_resource type="Texture2D" uid="uid://bbsokdtg0j1qx" path="res://Assets/factoryTiles.png" id="3_74j5a"]
 [ext_resource type="Script" path="res://ScriptFolder/CharacterWASD.gd" id="3_265ly"]
 [ext_resource type="Texture2D" uid="uid://dgqggkllpdqh6" path="res://Assets/AnimationSheet_Character.png" id="3_iu337"]
-[ext_resource type="Script" path="res://SceneFolder/LightOne.gd" id="6_t0ua0"]
 [ext_resource type="Script" path="res://SceneFolder/LightTwo.gd" id="7_50yko"]
 [ext_resource type="Script" path="res://SceneFolder/LightThree.gd" id="8_b4vw3"]
 
@@ -22801,9 +22800,6 @@ position = Vector2(303.125, 221)
 scale = Vector2(9.08984, 7.38672)
 energy = 1.8
 texture = SubResource("GradientTexture2D_omdsd")
-script = ExtResource("6_t0ua0")
-
-[node name="Timer" type="Timer" parent="LightOne"]
 
 [node name="LightTwo" type="PointLight2D" parent="."]
 position = Vector2(942.5, 263.5)
@@ -22812,7 +22808,7 @@ texture = SubResource("GradientTexture2D_v8oie")
 script = ExtResource("7_50yko")
 
 [node name="Timer" type="Timer" parent="LightTwo"]
-wait_time = 0.02
+wait_time = 0.05
 
 [node name="LightThree" type="PointLight2D" parent="."]
 position = Vector2(352.5, 597.875)
@@ -22821,13 +22817,12 @@ texture = SubResource("GradientTexture2D_u451k")
 script = ExtResource("8_b4vw3")
 
 [node name="Timer" type="Timer" parent="LightThree"]
-wait_time = 0.035
+wait_time = 0.065
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(205, 114)
 scale = Vector2(3.1875, 3.29688)
 color = Color(0, 0.564706, 0.564706, 1)
 
-[connection signal="timeout" from="LightOne/Timer" to="LightOne" method="_on_timer_timeout"]
 [connection signal="timeout" from="LightTwo/Timer" to="LightTwo" method="_on_timer_timeout"]
 [connection signal="timeout" from="LightThree/Timer" to="LightThree" method="_on_timer_timeout"]
