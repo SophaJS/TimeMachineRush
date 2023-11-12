@@ -1,11 +1,22 @@
+<<<<<<< HEAD
 [gd_scene load_steps=14 format=3 uid="uid://dnsryqopeaqth"]
+=======
+[gd_scene load_steps=12 format=3 uid="uid://dnsryqopeaqth"]
+>>>>>>> df98a13c2f9790b6ea785161bb2f0f4493270d83
 
 [ext_resource type="Script" path="res://ScriptFolder/Menu.gd" id="1_5iswb"]
 [ext_resource type="Texture2D" uid="uid://bbsokdtg0j1qx" path="res://Assets/factoryTiles.png" id="2_c7u70"]
 [ext_resource type="Texture2D" uid="uid://dqjk6forrno0u" path="res://tzKyzs.png" id="3_s68am"]
+<<<<<<< HEAD
 [ext_resource type="Script" path="res://SceneFolder/CharacterBody2D.gd" id="5_72xfb"]
 [ext_resource type="Texture2D" uid="uid://dgqggkllpdqh6" path="res://Assets/AnimationSheet_Character.png" id="6_l54jg"]
 [ext_resource type="Texture2D" uid="uid://dtn7om5pi3nd" path="res://Assets/picturetopeople.org-1aa683ea13d662b356590f608ebdae21082bc62c4729830d07.png" id="6_xuxdd"]
+=======
+[ext_resource type="FontFile" uid="uid://di5w4y7t4ghnk" path="res://BitPotion Full Extended/BitPotion.ttf" id="4_b4w28"]
+[ext_resource type="Script" path="res://SceneFolder/CharacterBody2D.gd" id="5_72xfb"]
+[ext_resource type="Texture2D" uid="uid://buaoobsm2tpjb" path="res://Assets/Animation_1.png" id="6_k0qm0"]
+[ext_resource type="Texture2D" uid="uid://fvycbq3ctxcb" path="res://Assets/animation_2real.png" id="7_jsklm"]
+>>>>>>> df98a13c2f9790b6ea785161bb2f0f4493270d83
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a5c4x"]
 texture = ExtResource("2_c7u70")
@@ -185,6 +196,7 @@ sources/0 = SubResource("TileSetAtlasSource_a5c4x")
 
 [sub_resource type="Theme" id="Theme_2jp45"]
 
+<<<<<<< HEAD
 [sub_resource type="Animation" id="Animation_a5f18"]
 resource_name = "Idle"
 length = 0.75
@@ -239,16 +251,41 @@ _data = {
 "RESET": SubResource("Animation_4xupl"),
 "Walking": SubResource("Animation_fiomr")
 }
+=======
+[sub_resource type="SpriteFrames" id="SpriteFrames_i7vxv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_k0qm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_k0qm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jsklm")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 1.0
+}]
+>>>>>>> df98a13c2f9790b6ea785161bb2f0f4493270d83
 
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+<<<<<<< HEAD
 offset_left = 8.0
 offset_top = -1.0
 offset_right = 8.0
 offset_bottom = -1.0
+=======
+offset_left = -62.0
+offset_top = -33.0
+offset_right = -62.0
+offset_bottom = -33.0
+>>>>>>> df98a13c2f9790b6ea785161bb2f0f4493270d83
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5iswb")
@@ -310,12 +347,40 @@ libraries = {
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
+<<<<<<< HEAD
 offset_left = -2.0
 offset_top = 100.0
 offset_right = 1247.0
 offset_bottom = 249.0
 scale = Vector2(0.898305, 0.824701)
 texture = ExtResource("6_xuxdd")
+=======
+offset_left = 50.0
+offset_top = 65.0
+offset_right = 216.0
+offset_bottom = 94.0
+scale = Vector2(6.47972, 7.30601)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_b4w28")
+theme_override_font_sizes/font_size = 32
+text = "Time Machine Rush"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 3
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("5_72xfb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(799, 543)
+scale = Vector2(4.25, 4.17647)
+sprite_frames = SubResource("SpriteFrames_i7vxv")
+animation = &"new_animation"
+frame_progress = 0.608907
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+>>>>>>> df98a13c2f9790b6ea785161bb2f0f4493270d83
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
