@@ -1,12 +1,16 @@
-[gd_scene load_steps=25 format=3 uid="uid://di6715pjxek7i"]
+[gd_scene load_steps=30 format=3 uid="uid://di6715pjxek7i"]
 
 [ext_resource type="Script" path="res://ScriptFolder/CharacterArrow.gd" id="1_2ivnq"]
 [ext_resource type="Texture2D" uid="uid://bvtq5pfjk2wsw" path="res://Assets/factory.png" id="2_bc1bn"]
 [ext_resource type="Texture2D" uid="uid://bbsokdtg0j1qx" path="res://Assets/factoryTiles.png" id="3_74j5a"]
 [ext_resource type="Script" path="res://ScriptFolder/CharacterWASD.gd" id="3_265ly"]
 [ext_resource type="Texture2D" uid="uid://dgqggkllpdqh6" path="res://Assets/AnimationSheet_Character.png" id="3_iu337"]
+[ext_resource type="Script" path="res://SceneFolder/HitBox.gd" id="6_wgn0r"]
 [ext_resource type="Script" path="res://SceneFolder/LightTwo.gd" id="7_50yko"]
 [ext_resource type="Script" path="res://SceneFolder/LightThree.gd" id="8_b4vw3"]
+[ext_resource type="PackedScene" uid="uid://xgeysr7i3qe2" path="res://static_body_2d.tscn" id="9_bob52"]
+[ext_resource type="Texture2D" uid="uid://dj4pbr8v67kix" path="res://Assets/unnamed.png" id="11_ke0pj"]
+[ext_resource type="Script" path="res://SceneFolder/TextureRect.gd" id="12_khy57"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rvcys"]
 texture = ExtResource("3_74j5a")
@@ -22710,6 +22714,9 @@ _data = {
 "Walking": SubResource("Animation_fiomr")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ii6x5"]
+radius = 25.9422
+
 [sub_resource type="Gradient" id="Gradient_xs6kj"]
 offsets = PackedFloat32Array(0, 0.993548, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0.0451613, 0.0451613, 0.0451613, 1)
@@ -22795,6 +22802,14 @@ libraries = {
 "": SubResource("AnimationLibrary_575rg")
 }
 
+[node name="HitBox" type="Area2D" parent="CharacterWASD"]
+position = Vector2(1529, 42)
+script = ExtResource("6_wgn0r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterWASD/HitBox"]
+position = Vector2(-731, 139)
+shape = SubResource("CircleShape2D_ii6x5")
+
 [node name="LightOne" type="PointLight2D" parent="."]
 position = Vector2(303.125, 221)
 scale = Vector2(9.08984, 7.38672)
@@ -22824,5 +22839,24 @@ position = Vector2(205, 114)
 scale = Vector2(3.1875, 3.29688)
 color = Color(0, 0.564706, 0.564706, 1)
 
+[node name="Impact" parent="." instance=ExtResource("9_bob52")]
+position = Vector2(468, -70)
+scale = Vector2(0.427005, 0.356686)
+
+[node name="TextureRect" type="TextureRect" parent="Impact"]
+visible = false
+light_mask = 0
+offset_left = -622.943
+offset_top = -36.4467
+offset_right = 1045.06
+offset_bottom = 2351.55
+scale = Vector2(1.00514, 1.09102)
+texture = ExtResource("11_ke0pj")
+script = ExtResource("12_khy57")
+
+[node name="Timer" type="Timer" parent="Impact/TextureRect"]
+wait_time = 1.5
+
 [connection signal="timeout" from="LightTwo/Timer" to="LightTwo" method="_on_timer_timeout"]
 [connection signal="timeout" from="LightThree/Timer" to="LightThree" method="_on_timer_timeout"]
+[connection signal="timeout" from="Impact/TextureRect/Timer" to="Impact/TextureRect" method="_on_timer_timeout"]

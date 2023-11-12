@@ -1,0 +1,16 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://vck3uu0mimfh"
+path="res://.godot/imported/BitPotionExt_Black.fnt-77c7bb811068b177ae719415509612df.fontdata"
+
+[deps]
+
+source_file="res://BitPotion Full Extended/BitPotionExt_Black.fnt"
+dest_files=["res://.godot/imported/BitPotionExt_Black.fnt-77c7bb811068b177ae719415509612df.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true

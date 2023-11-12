@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnsryqopeaqth"]
+[gd_scene load_steps=14 format=3 uid="uid://dnsryqopeaqth"]
 
 [ext_resource type="Script" path="res://ScriptFolder/Menu.gd" id="1_5iswb"]
 [ext_resource type="Texture2D" uid="uid://bbsokdtg0j1qx" path="res://Assets/factoryTiles.png" id="2_c7u70"]
+[ext_resource type="Texture2D" uid="uid://dqjk6forrno0u" path="res://tzKyzs.png" id="3_s68am"]
+[ext_resource type="Script" path="res://SceneFolder/CharacterBody2D.gd" id="5_72xfb"]
+[ext_resource type="Texture2D" uid="uid://dgqggkllpdqh6" path="res://Assets/AnimationSheet_Character.png" id="6_l54jg"]
+[ext_resource type="Texture2D" uid="uid://dtn7om5pi3nd" path="res://Assets/picturetopeople.org-1aa683ea13d662b356590f608ebdae21082bc62c4729830d07.png" id="6_xuxdd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a5c4x"]
 texture = ExtResource("2_c7u70")
@@ -179,11 +183,72 @@ texture_region_size = Vector2i(100, 100)
 tile_size = Vector2i(100, 100)
 sources/0 = SubResource("TileSetAtlasSource_a5c4x")
 
+[sub_resource type="Theme" id="Theme_2jp45"]
+
+[sub_resource type="Animation" id="Animation_a5f18"]
+resource_name = "Idle"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2559),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_4xupl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_fiomr"]
+resource_name = "Walking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_575rg"]
+_data = {
+"Idle": SubResource("Animation_a5f18"),
+"RESET": SubResource("Animation_4xupl"),
+"Walking": SubResource("Animation_fiomr")
+}
+
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -1.0
+offset_right = 8.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5iswb")
@@ -193,40 +258,64 @@ script = ExtResource("1_5iswb")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_oo84a")
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 65536, 11, 65536, 65536, 12, 131072, 65536, 13, 1, 131072, 11, 65537, 131072, 12, 131073, 131072, 13, 2, 196608, 11, 65538, 196608, 12, 131074, 196608, 13, 3, 65536, 11, 65539, 65536, 12, 131075, 65536, 13, 4, 131072, 11, 65540, 131072, 12, 131076, 131072, 13, 5, 196608, 11, 65541, 196608, 12, 131077, 196608, 13, 6, 65536, 11, 65542, 65536, 12, 131078, 65536, 13, 7, 131072, 11, 65543, 131072, 12, 131079, 131072, 13, 8, 196608, 11, 65544, 196608, 12, 131080, 196608, 13, 9, 65536, 11, 65545, 65536, 12, 131081, 65536, 13, 10, 131072, 11, 65546, 131072, 12, 131082, 131072, 13, 11, 196608, 11, 65547, 196608, 12, 131083, 196608, 13, 262144, 65536, 12, 327680, 65536, 13, 393216, 65536, 13, 262145, 131072, 12, 327681, 131072, 13, 393217, 131072, 13, 262146, 196608, 12, 327682, 196608, 13, 393218, 196608, 13, 196608, 65536, 11, 196609, 131072, 11, 196610, 196608, 11, 196611, 65536, 11, 262147, 65536, 11, 327683, 65536, 12, 196612, 131072, 11, 262148, 131072, 11, 327684, 131072, 12, 196613, 196608, 11, 262149, 196608, 11, 327685, 196608, 12, 196614, 65536, 11, 262150, 65536, 11, 327686, 65536, 12, 196615, 131072, 11, 262151, 131072, 11, 327687, 131072, 12, 196616, 65536, 11, 262152, 196608, 11, 327688, 196608, 12, 196617, 65536, 11, 262153, 65536, 11, 327689, 65536, 12, 196618, 131072, 11, 262154, 131072, 11, 327690, 131072, 12, 196619, 196608, 11, 262155, 196608, 11, 327691, 196608, 12, 393219, 65536, 13, 393220, 131072, 13, 393221, 196608, 13, 393222, 65536, 13, 393223, 131072, 13, 393224, 196608, 13, 393225, 65536, 13, 393226, 131072, 13, 393227, 196608, 13)
+layer_0/tile_data = PackedInt32Array(0, 983040, 10, 65536, 983040, 10, 131072, 983040, 10, 1, 983040, 10, 65537, 983040, 10, 131073, 983040, 10, 2, 983040, 10, 65538, 983040, 10, 131074, 983040, 10, 3, 983040, 10, 65539, 983040, 10, 131075, 983040, 10, 4, 983040, 10, 65540, 983040, 10, 131076, 983040, 10, 5, 983040, 10, 65541, 983040, 10, 131077, 983040, 10, 6, 983040, 10, 65542, 983040, 10, 131078, 983040, 10, 7, 983040, 10, 65543, 983040, 10, 131079, 983040, 10, 8, 983040, 10, 65544, 983040, 10, 131080, 983040, 10, 9, 983040, 10, 65545, 983040, 10, 131081, 983040, 10, 10, 983040, 10, 65546, 983040, 10, 131082, 983040, 10, 11, 983040, 10, 65547, 983040, 10, 131083, 983040, 10, 262144, 983040, 10, 327680, 983040, 10, 393216, 983040, 10, 262145, 983040, 10, 327681, 983040, 10, 393217, 983040, 10, 262146, 983040, 10, 327682, 983040, 10, 393218, 983040, 10, 196608, 983040, 10, 196609, 983040, 10, 196610, 983040, 10, 196611, 983040, 10, 262147, 983040, 10, 327683, 983040, 10, 196612, 983040, 10, 262148, 983040, 10, 327684, 983040, 10, 196613, 983040, 10, 262149, 983040, 10, 327685, 983040, 10, 196614, 983040, 10, 262150, 983040, 10, 327686, 983040, 10, 196615, 983040, 10, 262151, 983040, 10, 327687, 983040, 10, 196616, 983040, 10, 262152, 983040, 10, 327688, 983040, 10, 196617, 983040, 10, 262153, 983040, 10, 327689, 983040, 10, 196618, 983040, 10, 262154, 983040, 10, 327690, 983040, 10, 196619, 983040, 10, 262155, 983040, 10, 327691, 983040, 10, 393219, 983040, 10, 393220, 983040, 10, 393221, 983040, 10, 393222, 983040, 10, 393223, 983040, 10, 393224, 983040, 10, 393225, 983040, 10, 393226, 983040, 10, 393227, 983040, 10)
+
+[node name="TzKyzs" type="Sprite2D" parent="TileMap"]
+position = Vector2(595, 349.75)
+scale = Vector2(0.982085, 0.974198)
+texture = ExtResource("3_s68am")
 
 [node name="Play" type="Button" parent="."]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 371.0
-offset_right = 375.0
-offset_bottom = 534.0
+offset_left = 123.0
+offset_top = 316.0
+offset_right = 427.0
+offset_bottom = 365.0
+theme = SubResource("Theme_2jp45")
 text = "Play"
+icon_alignment = 1
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 772.0
-offset_top = 391.0
-offset_right = 1110.0
-offset_bottom = 576.0
+offset_left = 127.0
+offset_top = 469.0
+offset_right = 429.0
+offset_bottom = 518.0
 text = "Quit"
 
 [node name="Settings" type="Button" parent="."]
 layout_mode = 0
-offset_left = 532.0
-offset_top = 416.0
-offset_right = 622.0
-offset_bottom = 523.0
+offset_left = 126.0
+offset_top = 395.0
+offset_right = 430.0
+offset_bottom = 445.0
 text = "Settings"
 
-[node name="Label" type="Label" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("5_72xfb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(748, 488)
+scale = Vector2(7, 6.71429)
+texture = ExtResource("6_l54jg")
+hframes = 8
+vframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_575rg")
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 58.0
-offset_top = 112.0
-offset_right = 221.0
-offset_bottom = 138.0
-scale = Vector2(6.47972, 7.30601)
-text = "TIME MACHINE RUSH"
+offset_left = -2.0
+offset_top = 100.0
+offset_right = 1247.0
+offset_bottom = 249.0
+scale = Vector2(0.898305, 0.824701)
+texture = ExtResource("6_xuxdd")
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
