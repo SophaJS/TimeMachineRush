@@ -1,4 +1,3 @@
-class_name MyHurtBox
 extends Area2D
 
 func _init() -> void:
@@ -13,5 +12,14 @@ func _on_area_entered(hitbox: MyHitBox) -> void:
 		return
 		
 	if owner.has_method("Display"):
+		print("k")
 		owner.Display(hitbox.impact)
+		
+func _on_area_exited(hitbox: MyHitBox) -> void:
+	if hitbox == null:
+		return
+		
+	if owner.has_method("Display"):
+		print("h")
+		owner.Display(false)
 		

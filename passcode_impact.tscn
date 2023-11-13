@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dny3iinsn6p2a"]
+
+[ext_resource type="Script" path="res://passcode_impact.gd" id="1_tifof"]
+[ext_resource type="Script" path="res://MyHurtBox.gd" id="2_fhhlp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thxni"]
+size = Vector2(121.474, 171.019)
+
+[node name="PasscodeImpact" type="StaticBody2D"]
+position = Vector2(164, -72)
+scale = Vector2(0.427005, 0.356686)
+script = ExtResource("1_tifof")
+
+[node name="MyHurtBox" type="Area2D" parent="."]
+position = Vector2(-84.3081, 344.841)
+script = ExtResource("2_fhhlp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MyHurtBox"]
+position = Vector2(798.737, 256.528)
+shape = SubResource("RectangleShape2D_thxni")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://di6715pjxek7i"]
+[gd_scene load_steps=34 format=3 uid="uid://di6715pjxek7i"]
 
 [ext_resource type="Script" path="res://ScriptFolder/CharacterArrow.gd" id="1_2ivnq"]
 [ext_resource type="Texture2D" uid="uid://bvtq5pfjk2wsw" path="res://Assets/factory.png" id="2_bc1bn"]
@@ -10,7 +10,10 @@
 [ext_resource type="Script" path="res://SceneFolder/LightThree.gd" id="8_b4vw3"]
 [ext_resource type="PackedScene" uid="uid://xgeysr7i3qe2" path="res://static_body_2d.tscn" id="9_bob52"]
 [ext_resource type="Texture2D" uid="uid://dj4pbr8v67kix" path="res://Assets/unnamed.png" id="11_ke0pj"]
+[ext_resource type="PackedScene" uid="uid://dny3iinsn6p2a" path="res://passcode_impact.tscn" id="12_hno3i"]
 [ext_resource type="Script" path="res://SceneFolder/TextureRect.gd" id="12_khy57"]
+[ext_resource type="PackedScene" uid="uid://dxmhh27jcx3s0" path="res://password.tscn" id="13_hkl4k"]
+[ext_resource type="Texture2D" uid="uid://bunv4yrch5qxy" path="res://Assets/abstract-blur-background-with-pastel-color-free-vector.jpg" id="14_l1mai"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rvcys"]
 texture = ExtResource("3_74j5a")
@@ -22745,6 +22748,9 @@ fill = 1
 fill_from = Vector2(0.504587, 0)
 fill_to = Vector2(1, 0.279817)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_87dy5"]
+blend_mode = 2
+
 [node name="World" type="Node2D"]
 
 [node name="FactoryBackground" type="TileMap" parent="."]
@@ -22781,6 +22787,14 @@ vframes = 9
 libraries = {
 "": SubResource("AnimationLibrary_575rg")
 }
+
+[node name="HitBox" type="Area2D" parent="CharacterArrow"]
+position = Vector2(1529, 42)
+script = ExtResource("6_wgn0r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterArrow/HitBox"]
+position = Vector2(-1341, 519)
+shape = SubResource("CircleShape2D_ii6x5")
 
 [node name="CharacterWASD" type="CharacterBody2D" parent="."]
 position = Vector2(-693, -50)
@@ -22841,7 +22855,6 @@ color = Color(0, 0.564706, 0.564706, 1)
 
 [node name="Impact" parent="." instance=ExtResource("9_bob52")]
 position = Vector2(468, -70)
-scale = Vector2(0.427005, 0.356686)
 
 [node name="TextureRect" type="TextureRect" parent="Impact"]
 visible = false
@@ -22856,6 +22869,27 @@ script = ExtResource("12_khy57")
 
 [node name="Timer" type="Timer" parent="Impact/TextureRect"]
 wait_time = 1.5
+
+[node name="PasscodeImpact" parent="." instance=ExtResource("12_hno3i")]
+position = Vector2(6, 322)
+
+[node name="DisplayPasscode" type="TextureRect" parent="PasscodeImpact"]
+visible = false
+material = SubResource("CanvasItemMaterial_87dy5")
+offset_left = 903.971
+offset_top = -476.609
+offset_right = 1253.97
+offset_bottom = -276.609
+scale = Vector2(3.1788, 5.57608)
+texture = ExtResource("14_l1mai")
+
+[node name="Password" parent="PasscodeImpact" instance=ExtResource("13_hkl4k")]
+visible = false
+offset_left = 969.544
+offset_top = -437.359
+offset_right = 1292.54
+offset_bottom = -117.359
+scale = Vector2(3.05118, 3.20317)
 
 [connection signal="timeout" from="LightTwo/Timer" to="LightTwo" method="_on_timer_timeout"]
 [connection signal="timeout" from="LightThree/Timer" to="LightThree" method="_on_timer_timeout"]
