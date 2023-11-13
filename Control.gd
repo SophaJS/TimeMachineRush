@@ -1,6 +1,7 @@
 extends Control
 
 var next = 1
+var value = false
 
 func reset()->void:
 	next = 1
@@ -11,6 +12,8 @@ func _on_enter_pressed():
 			if $Key_3.text == "4":
 				if $Key_4.text == "4":
 					$Passcode.text = "Unlocked"
+					$Timer.start()
+					value = true
 	else:
 		$Passcode.text = "Error"
 		$Key_1.text = "_"
@@ -146,3 +149,14 @@ func _on_button_10_pressed():
 	elif next == 4:
 		$Key_4.text = "0"
 	next = next+1.
+
+
+func _on_button_11_pressed():
+	self.visible = false
+	$DisplayPasscode.visible = false
+
+
+func _on_timer_timeout():
+	self.visible = false
+	$DisplayPasscode.visible = false
+	owner.yeah()
