@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ScriptFolder/Menu.gd" id="1_5iswb"]
 [ext_resource type="Texture2D" uid="uid://bbsokdtg0j1qx" path="res://Assets/factoryTiles.png" id="2_c7u70"]
 [ext_resource type="Texture2D" uid="uid://dqjk6forrno0u" path="res://tzKyzs.png" id="3_s68am"]
-[ext_resource type="Script" path="res://SceneFolder/CharacterBody2D.gd" id="5_72xfb"]
+[ext_resource type="Script" path="res://ScriptFolder/CharacterBody2D.gd" id="4_jy0lq"]
 [ext_resource type="Texture2D" uid="uid://dgqggkllpdqh6" path="res://Assets/AnimationSheet_Character.png" id="6_l54jg"]
 [ext_resource type="Texture2D" uid="uid://dtn7om5pi3nd" path="res://Assets/picturetopeople.org-1aa683ea13d662b356590f608ebdae21082bc62c4729830d07.png" id="6_xuxdd"]
 
@@ -292,7 +292,7 @@ offset_bottom = 445.0
 text = "Settings"
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("5_72xfb")
+script = ExtResource("4_jy0lq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 

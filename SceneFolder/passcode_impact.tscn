@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://dny3iinsn6p2a"]
+
+[ext_resource type="Script" path="res://ScriptFolder/passcode_impact.gd" id="1_kkghv"]
+[ext_resource type="Texture2D" uid="uid://ccq0icy2l44b0" path="res://Assets/unnamed (2).png" id="2_amhjg"]
+[ext_resource type="Script" path="res://ScriptFolder/BouncyBoots.gd" id="3_avpmr"]
+[ext_resource type="Script" path="res://ScriptFolder/MyHurtBox.gd" id="4_ndqb4"]
+[ext_resource type="PackedScene" uid="uid://dxmhh27jcx3s0" path="res://SceneFolder/password.tscn" id="5_pla8c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thxni"]
+size = Vector2(121.474, 171.019)
+
+[node name="PasscodeImpact" type="StaticBody2D"]
+position = Vector2(164, -72)
+scale = Vector2(0.427005, 0.356686)
+script = ExtResource("1_kkghv")
+
+[node name="BouncyBoots" type="TextureRect" parent="."]
+visible = false
+light_mask = 0
+offset_left = 735.354
+offset_top = -793.415
+offset_right = 2403.35
+offset_bottom = 1594.58
+scale = Vector2(0.645455, 0.679208)
+texture = ExtResource("2_amhjg")
+script = ExtResource("3_avpmr")
+
+[node name="Timer" type="Timer" parent="BouncyBoots"]
+wait_time = 2.0
+
+[node name="MyHurtBox" type="Area2D" parent="."]
+position = Vector2(-84.3081, 344.841)
+script = ExtResource("4_ndqb4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MyHurtBox"]
+position = Vector2(798.737, 256.528)
+shape = SubResource("RectangleShape2D_thxni")
+
+[node name="Password" parent="." instance=ExtResource("5_pla8c")]
+visible = false
+offset_left = 983.595
+offset_top = -389.699
+offset_right = 1306.6
+offset_bottom = -69.6985
+scale = Vector2(2.41276, 2.66923)
+
+[connection signal="timeout" from="BouncyBoots/Timer" to="BouncyBoots" method="_on_timer_timeout"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://xgeysr7i3qe2"]
 
-[ext_resource type="Script" path="res://SceneFolder/StaticBody2D.gd" id="1_whqvl"]
-[ext_resource type="Script" path="res://SceneFolder/HurtBox.gd" id="2_b82jw"]
+[ext_resource type="Script" path="res://ScriptFolder/StaticBody2D.gd" id="1_og5pi"]
+[ext_resource type="Script" path="res://ScriptFolder/HurtBox.gd" id="2_b82jw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thxni"]
 size = Vector2(121.474, 171.019)
@@ -9,7 +9,7 @@ size = Vector2(121.474, 171.019)
 [node name="Impact" type="StaticBody2D"]
 position = Vector2(164, -72)
 scale = Vector2(0.427005, 0.356686)
-script = ExtResource("1_whqvl")
+script = ExtResource("1_og5pi")
 
 [node name="HurtBox" type="Area2D" parent="."]
 position = Vector2(-84.3081, 344.841)

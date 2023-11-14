@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://di6715pjxek7i"]
+[gd_scene load_steps=32 format=3 uid="uid://di6715pjxek7i"]
 
 [ext_resource type="Script" path="res://ScriptFolder/CharacterArrow.gd" id="1_2ivnq"]
 [ext_resource type="Script" path="res://SceneFolder/world.gd" id="1_ivbfj"]
@@ -6,16 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://bbsokdtg0j1qx" path="res://Assets/factoryTiles.png" id="3_74j5a"]
 [ext_resource type="Script" path="res://ScriptFolder/CharacterWASD.gd" id="3_265ly"]
 [ext_resource type="Texture2D" uid="uid://dgqggkllpdqh6" path="res://Assets/AnimationSheet_Character.png" id="3_iu337"]
-[ext_resource type="Script" path="res://SceneFolder/HitBox.gd" id="6_wgn0r"]
-[ext_resource type="Script" path="res://SceneFolder/LightTwo.gd" id="7_50yko"]
-[ext_resource type="Script" path="res://SceneFolder/LightThree.gd" id="8_b4vw3"]
-[ext_resource type="PackedScene" uid="uid://xgeysr7i3qe2" path="res://static_body_2d.tscn" id="9_bob52"]
+[ext_resource type="Script" path="res://ScriptFolder/HitBox.gd" id="5_1xonr"]
+[ext_resource type="Script" path="res://ScriptFolder/LightTwo.gd" id="7_jx2o8"]
+[ext_resource type="Script" path="res://ScriptFolder/LightThree.gd" id="8_ilsfb"]
+[ext_resource type="PackedScene" uid="uid://xgeysr7i3qe2" path="res://SceneFolder/static_body_2d.tscn" id="9_bob52"]
+[ext_resource type="Script" path="res://ScriptFolder/TextureRect.gd" id="11_hbkuj"]
 [ext_resource type="Texture2D" uid="uid://dj4pbr8v67kix" path="res://Assets/unnamed.png" id="11_ke0pj"]
-[ext_resource type="PackedScene" uid="uid://dny3iinsn6p2a" path="res://passcode_impact.tscn" id="12_hno3i"]
-[ext_resource type="Script" path="res://SceneFolder/TextureRect.gd" id="12_khy57"]
-[ext_resource type="PackedScene" uid="uid://dxmhh27jcx3s0" path="res://password.tscn" id="13_hkl4k"]
-[ext_resource type="Texture2D" uid="uid://ccq0icy2l44b0" path="res://Assets/unnamed (2).png" id="15_pt2rl"]
-[ext_resource type="Script" path="res://SceneFolder/BouncyBoots.gd" id="16_1wxse"]
+[ext_resource type="PackedScene" uid="uid://dny3iinsn6p2a" path="res://SceneFolder/passcode_impact.tscn" id="12_hno3i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rvcys"]
 texture = ExtResource("3_74j5a")
@@ -22790,7 +22787,7 @@ libraries = {
 
 [node name="HitBox" type="Area2D" parent="CharacterArrow"]
 position = Vector2(1529, 42)
-script = ExtResource("6_wgn0r")
+script = ExtResource("5_1xonr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterArrow/HitBox"]
 position = Vector2(-1341, 519)
@@ -22818,7 +22815,7 @@ libraries = {
 
 [node name="HitBox" type="Area2D" parent="CharacterWASD"]
 position = Vector2(1529, 42)
-script = ExtResource("6_wgn0r")
+script = ExtResource("5_1xonr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterWASD/HitBox"]
 position = Vector2(-731, 139)
@@ -22834,7 +22831,7 @@ texture = SubResource("GradientTexture2D_omdsd")
 position = Vector2(942.5, 263.5)
 scale = Vector2(6.76562, 7.48438)
 texture = SubResource("GradientTexture2D_v8oie")
-script = ExtResource("7_50yko")
+script = ExtResource("7_jx2o8")
 
 [node name="Timer" type="Timer" parent="LightTwo"]
 wait_time = 0.05
@@ -22843,7 +22840,7 @@ wait_time = 0.05
 position = Vector2(352.5, 597.875)
 scale = Vector2(8.45313, 7.06641)
 texture = SubResource("GradientTexture2D_u451k")
-script = ExtResource("8_b4vw3")
+script = ExtResource("8_ilsfb")
 
 [node name="Timer" type="Timer" parent="LightThree"]
 wait_time = 0.065
@@ -22865,7 +22862,7 @@ offset_right = 1045.06
 offset_bottom = 2351.55
 scale = Vector2(1.00514, 1.09102)
 texture = ExtResource("11_ke0pj")
-script = ExtResource("12_khy57")
+script = ExtResource("11_hbkuj")
 
 [node name="Timer" type="Timer" parent="Impact/TextureRect"]
 wait_time = 1.5
@@ -22873,33 +22870,6 @@ wait_time = 1.5
 [node name="PasscodeImpact" parent="." instance=ExtResource("12_hno3i")]
 position = Vector2(6, 322)
 
-[node name="Password" parent="PasscodeImpact" instance=ExtResource("13_hkl4k")]
-visible = false
-self_modulate = Color(0.341176, 0.54902, 0.768627, 1)
-top_level = true
-light_mask = 0
-visibility_layer = 4
-z_index = 3
-offset_left = 330.0
-offset_top = 111.0
-offset_right = 653.0
-offset_bottom = 431.0
-scale = Vector2(1.37125, 1.38767)
-
-[node name="BouncyBoots" type="TextureRect" parent="PasscodeImpact"]
-visible = false
-light_mask = 0
-offset_left = 229.505
-offset_top = -1281.24
-offset_right = 1897.51
-offset_bottom = 1106.76
-scale = Vector2(1.22321, 1.13432)
-texture = ExtResource("15_pt2rl")
-script = ExtResource("16_1wxse")
-
-[node name="BouncyTimer" type="Timer" parent="."]
-
 [connection signal="timeout" from="LightTwo/Timer" to="LightTwo" method="_on_timer_timeout"]
 [connection signal="timeout" from="LightThree/Timer" to="LightThree" method="_on_timer_timeout"]
 [connection signal="timeout" from="Impact/TextureRect/Timer" to="Impact/TextureRect" method="_on_timer_timeout"]
-[connection signal="timeout" from="BouncyTimer" to="." method="_on_bouncy_timer_timeout"]
