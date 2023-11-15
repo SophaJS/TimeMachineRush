@@ -7,7 +7,7 @@ func _init() -> void:
 func _ready() -> void:
 	self.area_entered.connect(_on_area_entered)
 	
-func _on_area_entered(hitbox: MyHitBox) -> void:
+func _on_area_entered(hitbox: HitBox) -> void:
 	if hitbox == null:
 		return
 		

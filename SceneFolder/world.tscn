@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://di6715pjxek7i"]
+[gd_scene load_steps=40 format=3 uid="uid://di6715pjxek7i"]
 
 [ext_resource type="Script" path="res://ScriptFolder/CharacterArrow.gd" id="1_2ivnq"]
 [ext_resource type="Script" path="res://SceneFolder/world.gd" id="1_ivbfj"]
@@ -7,11 +7,17 @@
 [ext_resource type="Script" path="res://ScriptFolder/CharacterWASD.gd" id="3_265ly"]
 [ext_resource type="Texture2D" uid="uid://dgqggkllpdqh6" path="res://Assets/AnimationSheet_Character.png" id="3_iu337"]
 [ext_resource type="Script" path="res://ScriptFolder/HitBox.gd" id="5_1xonr"]
+[ext_resource type="Script" path="res://SceneFolder/Hit.gd" id="6_5yses"]
 [ext_resource type="Script" path="res://ScriptFolder/LightTwo.gd" id="7_jx2o8"]
 [ext_resource type="Script" path="res://ScriptFolder/LightThree.gd" id="8_ilsfb"]
 [ext_resource type="PackedScene" uid="uid://xgeysr7i3qe2" path="res://SceneFolder/static_body_2d.tscn" id="9_bob52"]
+[ext_resource type="Script" path="res://SceneFolder/Node2D.gd" id="10_eeu2v"]
+[ext_resource type="Script" path="res://SceneFolder/Win.gd" id="10_yxl8j"]
+[ext_resource type="Script" path="res://Hurt.gd" id="11_b4w2e"]
+[ext_resource type="Script" path="res://SceneFolder/WinAgain.gd" id="11_h2l8x"]
 [ext_resource type="Script" path="res://ScriptFolder/TextureRect.gd" id="11_hbkuj"]
 [ext_resource type="Texture2D" uid="uid://dj4pbr8v67kix" path="res://Assets/unnamed.png" id="11_ke0pj"]
+[ext_resource type="Script" path="res://SceneFolder/HurtRight.gd" id="12_5uqow"]
 [ext_resource type="PackedScene" uid="uid://dny3iinsn6p2a" path="res://SceneFolder/passcode_impact.tscn" id="12_hno3i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rvcys"]
@@ -22658,6 +22664,40 @@ tile_size = Vector2i(30, 30)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_omhc5")
 
+[sub_resource type="Gradient" id="Gradient_xs6kj"]
+offsets = PackedFloat32Array(0, 0.993548, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0.0451613, 0.0451613, 0.0451613, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_omdsd"]
+gradient = SubResource("Gradient_xs6kj")
+fill = 1
+fill_from = Vector2(0.504587, 0.0458716)
+fill_to = Vector2(0, 0.37156)
+
+[sub_resource type="Gradient" id="Gradient_lgesl"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v8oie"]
+gradient = SubResource("Gradient_lgesl")
+fill = 1
+fill_from = Vector2(0.5, 0.0733945)
+fill_to = Vector2(1, 0.545872)
+
+[sub_resource type="Gradient" id="Gradient_5qojy"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u451k"]
+gradient = SubResource("Gradient_5qojy")
+fill = 1
+fill_from = Vector2(0.504587, 0)
+fill_to = Vector2(1, 0.279817)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hri5e"]
+radius = 92.2659
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v6qhl"]
+radius = 39.5997
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_up7p6"]
 size = Vector2(39, 79)
 
@@ -22719,34 +22759,6 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_ii6x5"]
 radius = 25.9422
 
-[sub_resource type="Gradient" id="Gradient_xs6kj"]
-offsets = PackedFloat32Array(0, 0.993548, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0.0451613, 0.0451613, 0.0451613, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_omdsd"]
-gradient = SubResource("Gradient_xs6kj")
-fill = 1
-fill_from = Vector2(0.504587, 0.0458716)
-fill_to = Vector2(0, 0.37156)
-
-[sub_resource type="Gradient" id="Gradient_lgesl"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_v8oie"]
-gradient = SubResource("Gradient_lgesl")
-fill = 1
-fill_from = Vector2(0.5, 0.0733945)
-fill_to = Vector2(1, 0.545872)
-
-[sub_resource type="Gradient" id="Gradient_5qojy"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_u451k"]
-gradient = SubResource("Gradient_5qojy")
-fill = 1
-fill_from = Vector2(0.504587, 0)
-fill_to = Vector2(1, 0.279817)
-
 [node name="World" type="Node2D"]
 script = ExtResource("1_ivbfj")
 
@@ -22765,62 +22777,6 @@ tile_set = SubResource("TileSet_fum5o")
 format = 2
 layer_0/tile_data = PackedInt32Array(1310720, 0, 0, 1376256, 0, 1, 1310721, 65536, 0, 1376257, 65536, 1, 1310722, 131072, 0, 1376258, 131072, 1, 1310723, 196608, 0, 1376259, 196608, 1, 1310724, 262144, 0, 1376260, 262144, 1, 1310725, 327680, 0, 1376261, 327680, 1, 1310726, 393216, 0, 1376262, 393216, 1, 1310727, 458752, 0, 1376263, 458752, 1, 1310728, 524288, 0, 1376264, 524288, 1, 1310729, 589824, 0, 1376265, 589824, 1, 1310730, 0, 0, 1376266, 0, 1, 1310731, 65536, 0, 1376267, 65536, 1, 1310732, 131072, 0, 1376268, 131072, 1, 1310733, 196608, 0, 1376269, 196608, 1, 1310734, 262144, 0, 1376270, 262144, 1, 1310735, 327680, 0, 1376271, 327680, 1, 1310736, 393216, 0, 1376272, 393216, 1, 1310737, 458752, 0, 1376273, 458752, 1, 1310738, 524288, 0, 1376274, 524288, 1, 1310739, 589824, 0, 1376275, 589824, 1, 1310740, 0, 0, 1376276, 0, 1, 1310741, 65536, 0, 1376277, 65536, 1, 1310742, 131072, 0, 1376278, 131072, 1, 1310743, 196608, 0, 1376279, 196608, 1, 1310744, 262144, 0, 1376280, 262144, 1, 1310745, 327680, 0, 1376281, 327680, 1, 1310746, 393216, 0, 1376282, 393216, 1, 1310747, 458752, 0, 1376283, 458752, 1, 1310748, 524288, 0, 1376284, 524288, 1, 1310749, 589824, 0, 1376285, 589824, 1, 1310750, 0, 0, 1376286, 0, 1, 1310751, 65536, 0, 1376287, 65536, 1, 1310752, 131072, 0, 1376288, 131072, 1, 1310753, 196608, 0, 1376289, 196608, 1, 1310754, 262144, 0, 1376290, 262144, 1, 1310755, 327680, 0, 1376291, 327680, 1, 1310756, 393216, 0, 1376292, 393216, 1, 1310757, 458752, 0, 1376293, 458752, 1, 1310758, 524288, 0, 1376294, 524288, 1, 1310759, 589824, 0, 1376295, 589824, 1, 720894, 1376256, 9, 786430, 1376256, 1, 851966, 1376256, 2, 917502, 1376256, 3, 983038, 1376256, 4, 1048574, 1376256, 5, 1114110, 1376256, 6, 1179646, 1376256, 7, 1245182, 1376256, 8, 1310718, 1376256, 9, 720895, 1441792, 9, 786431, 1441792, 1, 851967, 1441792, 2, 917503, 1441792, 3, 983039, 1441792, 4, 1048575, 1441792, 5, 1114111, 1441792, 6, 1179647, 1441792, 7, 1245183, 1441792, 8, 1310719, 1441792, 9, 655360, 1441792, 4, 720896, 1441792, 5, 786432, 1441792, 6, 851968, 1441792, 7, 917504, 1441792, 8, 983040, 1441792, 9, 1048576, 1441792, 6, 1114112, 1441792, 7, 1179648, 1441792, 8, 1245184, 1441792, 9, 131070, 1376256, 2, 196606, 1376256, 3, 262142, 1376256, 4, 327678, 1376256, 5, 393214, 1376256, 6, 458750, 1376256, 7, 524286, 1376256, 8, 589822, 1376256, 9, 655358, 1376256, 8, 131071, 1441792, 2, 196607, 1441792, 3, 262143, 1441792, 4, 327679, 1441792, 5, 393215, 1441792, 6, 458751, 1441792, 7, 524287, 1441792, 8, 589823, 1441792, 9, 655359, 1441792, 8, 65536, 1441792, 2, 131072, 1441792, 3, 196608, 1441792, 4, 262144, 1441792, 5, 327680, 1441792, 6, 393216, 1441792, 7, 458752, 1441792, 8, 524288, 1441792, 9, 589824, 1441792, 3, -2, 0, 8, 65534, 0, 9, -1, 65536, 8, 65535, 65536, 9, -65536, 131072, 8, 0, 131072, 9, -131072, 0, 8, -131071, 65536, 8, -65535, 196608, 8, -131070, 131072, 8, -65534, 262144, 8, -131069, 196608, 8, -65533, 327680, 8, -131068, 262144, 8, -65532, 393216, 8, -131067, 327680, 8, -65531, 458752, 8, -131066, 393216, 8, -65530, 524288, 8, -131065, 458752, 8, -65529, 589824, 8, -131064, 524288, 8, -65528, 0, 8, -131063, 589824, 8, -65527, 65536, 8, -131062, 0, 8, -65526, 131072, 8, -131061, 65536, 8, -65525, 196608, 8, -131060, 131072, 8, -65524, 262144, 8, -131059, 196608, 8, -65523, 327680, 8, -131058, 262144, 8, -65522, 0, 8, -131057, 327680, 8, -65521, 65536, 8, -131056, 393216, 8, -65520, 131072, 8, -131055, 458752, 8, -65519, 196608, 8, -131054, 524288, 8, -65518, 262144, 8, -131053, 589824, 8, -65517, 327680, 8, -131052, 0, 8, -65516, 0, 8, -131051, 65536, 8, -65515, 65536, 8, -131050, 131072, 8, -65514, 131072, 8, -131049, 196608, 8, -65513, 196608, 8, -131048, 262144, 8, -65512, 262144, 8, -131047, 327680, 8, -65511, 0, 8, -131046, 393216, 8, -65510, 65536, 8, -131045, 458752, 8, -65509, 131072, 8, -131044, 524288, 8, -65508, 196608, 8, -131043, 589824, 8, -65507, 262144, 8, -131042, 0, 8, -65506, 0, 8, -131041, 65536, 8, -65505, 65536, 8, -131040, 131072, 8, -65504, 131072, 8, -131039, 196608, 8, -65503, 196608, 8, -131038, 262144, 8, -65502, 262144, 8, -131037, 327680, 8, -65501, 327680, 8, -131036, 393216, 8, -65500, 393216, 8, -131035, 851968, 0, -65499, 458752, 8, -131034, 917504, 0, -65498, 524288, 8, -131033, 983040, 0, -65497, 589824, 8, 655397, 851968, 9, 720933, 851968, 1, 786469, 851968, 2, 852005, 589824, 0, 917541, 589824, 1, 983077, 851968, 5, 1048613, 851968, 6, 1114149, 851968, 7, 1179685, 851968, 8, 1245221, 851968, 9, 655398, 917504, 9, 720934, 917504, 1, 786470, 917504, 2, 852006, 917504, 3, 917542, 917504, 4, 983078, 917504, 5, 1048614, 917504, 6, 1114150, 917504, 7, 1179686, 917504, 8, 1245222, 917504, 9, 655399, 983040, 9, 720935, 983040, 1, 786471, 983040, 2, 852007, 983040, 3, 917543, 983040, 4, 983079, 983040, 5, 1048615, 983040, 6, 1114151, 983040, 7, 1179687, 983040, 8, 1245223, 983040, 9, 65573, 851968, 3, 131109, 851968, 4, 196645, 851968, 5, 262181, 851968, 6, 327717, 851968, 7, 393253, 851968, 8, 458789, 851968, 9, 524325, 851968, 7, 589861, 851968, 8, 65574, 917504, 3, 131110, 917504, 4, 196646, 917504, 5, 262182, 917504, 6, 327718, 917504, 7, 393254, 917504, 8, 458790, 917504, 9, 524326, 917504, 7, 589862, 917504, 8, 65575, 983040, 3, 131111, 983040, 4, 196647, 983040, 5, 262183, 983040, 6, 327719, 983040, 7, 393255, 983040, 8, 458791, 983040, 9, 524327, 983040, 7, 589863, 983040, 8, 37, 458752, 9, 38, 524288, 9, 39, 589824, 9, 655361, 1507328, 4, 720897, 1507328, 5, 786433, 1507328, 6, 851969, 1507328, 7, 917505, 1507328, 8, 983041, 1507328, 9, 1048577, 1507328, 6, 1114113, 1507328, 7, 1179649, 1507328, 8, 1245185, 1507328, 9, 393217, 524288, 4, 458753, 0, 1, 524289, 1507328, 9, 589825, 1507328, 3, 1, 196608, 9, 65537, 1507328, 2, 131073, 1507328, 3, 196609, 1507328, 4, 262145, 1507328, 5, 327681, 1507328, 6, 2, 262144, 9, 3, 327680, 9, 4, 393216, 9, 5, 458752, 9, 6, 524288, 9, 7, 589824, 9, 8, 0, 9, 9, 65536, 9, 10, 131072, 9, 11, 196608, 9, 12, 262144, 9, 13, 327680, 9, 14, 0, 9, 15, 65536, 9, 16, 131072, 9, 17, 196608, 9, 18, 262144, 9, 19, 327680, 9, 20, 0, 9, 21, 65536, 9, 22, 131072, 9, 23, 196608, 9, 24, 262144, 9, 25, 0, 9, 26, 65536, 9, 27, 131072, 9, 28, 196608, 9, 29, 262144, 9, 30, 0, 9, 31, 65536, 9, 32, 131072, 9, 33, 196608, 9, 34, 262144, 9, 35, 327680, 9, 36, 393216, 9, 393218, 524288, 4, 458754, 65536, 1, 393219, 524288, 4, 458755, 131072, 1, 393220, 524288, 4, 458756, 196608, 1, 393221, 524288, 4, 458757, 262144, 1, 393222, 524288, 4, 458758, 327680, 1, 393223, 524288, 4, 458759, 393216, 1, 393224, 524288, 4, 458760, 458752, 1, 393225, 524288, 4, 458761, 524288, 1, 393226, 524288, 4, 458762, 0, 1, 524298, 0, 1, 458763, 65536, 3, 524299, 65536, 1, 458764, 131072, 0, 524300, 131072, 1, 458765, 196608, 0, 524301, 196608, 1, 458766, 262144, 0, 524302, 262144, 1, 458767, 327680, 0, 524303, 327680, 1, 458768, 393216, 0, 524304, 393216, 1, 458769, 458752, 0, 524305, 458752, 1, 458770, 524288, 0, 524306, 524288, 1, 458771, 589824, 0, 524307, 589824, 1, 393227, 786432, 29, 458772, 0, 0, 524308, 0, 1, 458773, 65536, 0, 524309, 65536, 1, 458774, 131072, 0, 524310, 131072, 1, 458775, 196608, 0, 524311, 196608, 1, 458776, 262144, 0, 524312, 262144, 1, 458777, 327680, 0, 524313, 327680, 1, 458778, 393216, 0, 524314, 393216, 1, 458779, 458752, 0, 524315, 458752, 1, 458780, 524288, 0, 524316, 524288, 1, 458781, 589824, 0, 524317, 589824, 1, 458782, 196608, 0, 458783, 262144, 0, 458784, 327680, 0, 458785, 393216, 0, 851973, 196608, 0, 851974, 262144, 0, 851975, 327680, 0, 851976, 524288, 6, 786441, 0, 0, 851977, 0, 1, 786442, 65536, 0, 851978, 65536, 1, 786443, 131072, 0, 851979, 131072, 1, 786444, 196608, 0, 851980, 196608, 1, 786445, 262144, 0, 851981, 262144, 1, 786446, 327680, 0, 851982, 524288, 1, 917518, 0, 1, 851983, 65536, 0, 917519, 65536, 1, 851984, 131072, 0, 917520, 131072, 1, 851985, 196608, 0, 917521, 196608, 1, 851986, 262144, 0, 917522, 262144, 1, 851987, 327680, 0, 917523, 327680, 1, 786439, 1048576, 29, 786440, 1114112, 29, 851988, 0, 0, 917524, 0, 1, 851989, 65536, 0, 917525, 65536, 1, 851990, 131072, 0, 917526, 131072, 1, 851991, 196608, 0, 917527, 196608, 1, 851992, 262144, 0, 917528, 262144, 1, 851993, 327680, 0, 917529, 327680, 1, 851994, 393216, 0, 917530, 393216, 1, 851995, 458752, 0, 917531, 458752, 1, 851996, 0, 0, 917532, 0, 1, 851997, 65536, 0, 917533, 65536, 1, 851998, 131072, 0, 917534, 131072, 1, 851999, 196608, 0, 917535, 196608, 1, 852000, 262144, 0, 917536, 262144, 1, 852001, 327680, 0, 917537, 327680, 1, 852002, 393216, 0, 917538, 393216, 1, 852003, 458752, 0, 917539, 458752, 1, 852004, 524288, 0, 917540, 524288, 1)
 
-[node name="CharacterArrow" type="CharacterBody2D" parent="."]
-position = Vector2(836, -8)
-script = ExtResource("1_2ivnq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterArrow"]
-position = Vector2(189.75, 561.142)
-shape = SubResource("RectangleShape2D_up7p6")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterArrow"]
-position = Vector2(192.25, 558.142)
-scale = Vector2(2.95312, 2.8214)
-texture = ExtResource("3_iu337")
-hframes = 8
-vframes = 9
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterArrow"]
-libraries = {
-"": SubResource("AnimationLibrary_575rg")
-}
-
-[node name="HitBox" type="Area2D" parent="CharacterArrow"]
-position = Vector2(1529, 42)
-script = ExtResource("5_1xonr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterArrow/HitBox"]
-position = Vector2(-1341, 519)
-shape = SubResource("CircleShape2D_ii6x5")
-
-[node name="CharacterWASD" type="CharacterBody2D" parent="."]
-position = Vector2(-693, -50)
-script = ExtResource("3_265ly")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterWASD"]
-position = Vector2(796, 182)
-shape = SubResource("RectangleShape2D_up7p6")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterWASD"]
-position = Vector2(801, 176)
-scale = Vector2(2.95312, 2.8214)
-texture = ExtResource("3_iu337")
-hframes = 8
-vframes = 9
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterWASD"]
-libraries = {
-"": SubResource("AnimationLibrary_575rg")
-}
-
-[node name="HitBox" type="Area2D" parent="CharacterWASD"]
-position = Vector2(1529, 42)
-script = ExtResource("5_1xonr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterWASD/HitBox"]
-position = Vector2(-731, 139)
-shape = SubResource("CircleShape2D_ii6x5")
-
 [node name="LightOne" type="PointLight2D" parent="."]
 position = Vector2(303.125, 221)
 scale = Vector2(9.08984, 7.38672)
@@ -22837,7 +22793,7 @@ script = ExtResource("7_jx2o8")
 wait_time = 0.05
 
 [node name="LightThree" type="PointLight2D" parent="."]
-position = Vector2(352.5, 597.875)
+position = Vector2(352.5, 622.875)
 scale = Vector2(8.45313, 7.06641)
 texture = SubResource("GradientTexture2D_u451k")
 script = ExtResource("8_ilsfb")
@@ -22869,6 +22825,87 @@ wait_time = 1.5
 
 [node name="PasscodeImpact" parent="." instance=ExtResource("12_hno3i")]
 position = Vector2(6, 322)
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("10_eeu2v")
+
+[node name="WinAgain" type="StaticBody2D" parent="Node2D"]
+script = ExtResource("11_h2l8x")
+
+[node name="HurtRight" type="Area2D" parent="Node2D/WinAgain"]
+script = ExtResource("12_5uqow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/WinAgain/HurtRight"]
+position = Vector2(646, 318)
+shape = SubResource("CircleShape2D_hri5e")
+
+[node name="Win" type="StaticBody2D" parent="Node2D"]
+position = Vector2(-118, 104)
+scale = Vector2(2.61661, 1.62424)
+script = ExtResource("10_yxl8j")
+
+[node name="HurtLeft" type="Area2D" parent="Node2D/Win"]
+script = ExtResource("11_b4w2e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Win/HurtLeft"]
+position = Vector2(258.35, 129.291)
+scale = Vector2(0.86353, 1.3992)
+shape = SubResource("CircleShape2D_v6qhl")
+
+[node name="CharacterArrow" type="CharacterBody2D" parent="."]
+position = Vector2(836, -7.99999)
+script = ExtResource("1_2ivnq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterArrow"]
+position = Vector2(189.75, 561.142)
+shape = SubResource("RectangleShape2D_up7p6")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterArrow"]
+position = Vector2(192.25, 558.142)
+scale = Vector2(2.95312, 2.8214)
+texture = ExtResource("3_iu337")
+hframes = 8
+vframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterArrow"]
+libraries = {
+"": SubResource("AnimationLibrary_575rg")
+}
+
+[node name="Hit" type="Area2D" parent="CharacterArrow"]
+script = ExtResource("6_5yses")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterArrow/Hit"]
+position = Vector2(188, 561)
+shape = SubResource("CircleShape2D_ii6x5")
+
+[node name="CharacterWASD" type="CharacterBody2D" parent="."]
+position = Vector2(-693, -50)
+script = ExtResource("3_265ly")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterWASD"]
+position = Vector2(796, 182)
+shape = SubResource("RectangleShape2D_up7p6")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterWASD"]
+position = Vector2(801, 176)
+scale = Vector2(2.95312, 2.8214)
+texture = ExtResource("3_iu337")
+hframes = 8
+vframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterWASD"]
+libraries = {
+"": SubResource("AnimationLibrary_575rg")
+}
+
+[node name="HitBox" type="Area2D" parent="CharacterWASD"]
+position = Vector2(1529, 42)
+script = ExtResource("5_1xonr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterWASD/HitBox"]
+position = Vector2(-731, 139)
+shape = SubResource("CircleShape2D_ii6x5")
 
 [connection signal="timeout" from="LightTwo/Timer" to="LightTwo" method="_on_timer_timeout"]
 [connection signal="timeout" from="LightThree/Timer" to="LightThree" method="_on_timer_timeout"]
