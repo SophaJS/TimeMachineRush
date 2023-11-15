@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://di6715pjxek7i"]
+[gd_scene load_steps=41 format=3 uid="uid://di6715pjxek7i"]
 
 [ext_resource type="Script" path="res://ScriptFolder/CharacterArrow.gd" id="1_2ivnq"]
 [ext_resource type="Script" path="res://SceneFolder/world.gd" id="1_ivbfj"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dj4pbr8v67kix" path="res://Assets/unnamed.png" id="11_ke0pj"]
 [ext_resource type="Script" path="res://SceneFolder/HurtRight.gd" id="12_5uqow"]
 [ext_resource type="PackedScene" uid="uid://dny3iinsn6p2a" path="res://SceneFolder/passcode_impact.tscn" id="12_hno3i"]
+[ext_resource type="PackedScene" uid="uid://c1jaorxi1j34c" path="res://count_down.tscn" id="20_yc6fy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rvcys"]
 texture = ExtResource("3_74j5a")
@@ -22908,6 +22909,11 @@ script = ExtResource("11_b4w2e")
 position = Vector2(258.35, 129.291)
 scale = Vector2(0.86353, 1.3992)
 shape = SubResource("CircleShape2D_v6qhl")
+
+[node name="CountDown" parent="." instance=ExtResource("20_yc6fy")]
+offset_left = 28.0
+offset_right = 28.0
+scale = Vector2(4.30469, 3.47539)
 
 [connection signal="timeout" from="LightTwo/Timer" to="LightTwo" method="_on_timer_timeout"]
 [connection signal="timeout" from="LightThree/Timer" to="LightThree" method="_on_timer_timeout"]
