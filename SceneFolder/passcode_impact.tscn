@@ -16,12 +16,15 @@ script = ExtResource("1_kkghv")
 
 [node name="BouncyBoots" type="TextureRect" parent="."]
 visible = false
+top_level = true
 light_mask = 0
-offset_left = 735.354
-offset_top = -953.219
-offset_right = 2403.35
-offset_bottom = 1434.78
-scale = Vector2(0.756188, 0.806882)
+visibility_layer = 4
+z_index = 4
+offset_left = 252.0
+offset_top = -54.0
+offset_right = 1920.0
+offset_bottom = 2334.0
+scale = Vector2(0.356918, 0.319965)
 texture = ExtResource("2_amhjg")
 script = ExtResource("3_avpmr")
 
@@ -38,10 +41,13 @@ shape = SubResource("RectangleShape2D_thxni")
 
 [node name="Password" parent="." instance=ExtResource("5_pla8c")]
 visible = false
-offset_left = 983.595
-offset_top = -552.307
-offset_right = 1306.6
-offset_bottom = -232.306
-scale = Vector2(2.87331, 3.33281)
+top_level = true
+visibility_layer = 4
+z_index = 3
+offset_left = 390.0
+offset_top = 125.0
+offset_right = 713.005
+offset_bottom = 445.001
+scale = Vector2(1.15349, 1.09724)
 
 [connection signal="timeout" from="BouncyBoots/Timer" to="BouncyBoots" method="_on_timer_timeout"]
