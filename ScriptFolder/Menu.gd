@@ -1,8 +1,9 @@
 extends Control
 
 func _ready():
-	Music.stopMusic()
 	MenuMusic.playMusic()
+	Music.stopMusic()
+	
 
 func _on_play_pressed():
 	get_tree().change_scene_to_file("res://SceneFolder/world.tscn")

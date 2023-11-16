@@ -51,17 +51,19 @@ columns = 2
 
 [node name="Music" type="Label" parent="TabContainer/SettingsMenu/settingsmenu"]
 layout_mode = 2
-text = "Music"
+text = "Menu Music"
 
-[node name="CheckButtonMusic" type="CheckButton" parent="TabContainer/SettingsMenu/settingsmenu"]
+[node name="MenuMusic" type="CheckButton" parent="TabContainer/SettingsMenu/settingsmenu"]
 layout_mode = 2
+keep_pressed_outside = true
 
 [node name="Label" type="Label" parent="TabContainer/SettingsMenu/settingsmenu"]
 layout_mode = 2
-text = "Sound Effects"
+text = "Game Music"
 
-[node name="CheckButtonSoundEffects" type="CheckButton" parent="TabContainer/SettingsMenu/settingsmenu"]
+[node name="GameMusic" type="CheckButton" parent="TabContainer/SettingsMenu/settingsmenu"]
 layout_mode = 2
+action_mode = 0
 
 [node name="Button" type="Button" parent="."]
 top_level = true
@@ -73,6 +75,6 @@ offset_bottom = 557.0
 scale = Vector2(1.95275, 1.60231)
 text = "Back"
 
-[connection signal="toggled" from="TabContainer/SettingsMenu/settingsmenu/CheckButtonMusic" to="." method="_on_check_button_music_toggled"]
-[connection signal="toggled" from="TabContainer/SettingsMenu/settingsmenu/CheckButtonSoundEffects" to="." method="_on_check_button_sound_effects_toggled"]
+[connection signal="toggled" from="TabContainer/SettingsMenu/settingsmenu/MenuMusic" to="." method="_on_menu_music_toggled"]
+[connection signal="toggled" from="TabContainer/SettingsMenu/settingsmenu/GameMusic" to="." method="_on_game_music_toggled"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

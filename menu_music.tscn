@@ -10,3 +10,4 @@ script = ExtResource("1_nct5y")
 stream = ExtResource("2_k71sn")
 volume_db = -15.0
 pitch_scale = 0.6
+bus = &"menuMusic"

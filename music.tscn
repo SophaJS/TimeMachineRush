@@ -9,3 +9,4 @@ script = ExtResource("2_ga1j4")
 [node name="jam" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_xlqm3")
 volume_db = -15.0
+bus = &"gameMusic"
