@@ -19,3 +19,7 @@ func _on_check_button_music_toggled(button_pressed):
 
 func _on_check_button_sound_effects_toggled(button_pressed):
 	pass # Replace with function body.
+
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://SceneFolder/Menu.tscn")

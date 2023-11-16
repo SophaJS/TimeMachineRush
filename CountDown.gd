@@ -17,5 +17,10 @@ func _on_timer_timeout():
 			$Seconds.text = "0" + str(seconds)
 	
 func DoStuff() -> void:
-	get_tree().change_scene_to_file("res://SceneFolder/game_lose.tscn")
+	$CharacterWASD.active = false
+	$CharacterArrow.active = false
+	$Timer2.start()
 	
+
+func _on_timer_2_timeout():
+	get_tree().change_scene_to_file("res://SceneFolder/game_lose.tscn")
