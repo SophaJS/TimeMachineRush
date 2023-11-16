@@ -63,24 +63,16 @@ text = "Sound Effects"
 [node name="CheckButtonSoundEffects" type="CheckButton" parent="TabContainer/SettingsMenu/settingsmenu"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="Button" type="Button" parent="."]
+top_level = true
 layout_mode = 0
-offset_left = -6.0
-offset_top = 572.0
-offset_right = 34.0
-offset_bottom = 598.0
-scale = Vector2(1.55195, 1.23694)
+offset_left = 38.0
+offset_top = 526.0
+offset_right = 83.0
+offset_bottom = 557.0
+scale = Vector2(1.95275, 1.60231)
 text = "Back"
-
-[node name="Button" type="Button" parent="Label"]
-show_behind_parent = true
-layout_mode = 0
-offset_left = -4.51045
-offset_top = -0.808441
-offset_right = 3.48955
-offset_bottom = 7.19156
-scale = Vector2(6.07925, 3.36368)
 
 [connection signal="toggled" from="TabContainer/SettingsMenu/settingsmenu/CheckButtonMusic" to="." method="_on_check_button_music_toggled"]
 [connection signal="toggled" from="TabContainer/SettingsMenu/settingsmenu/CheckButtonSoundEffects" to="." method="_on_check_button_sound_effects_toggled"]
-[connection signal="pressed" from="Label/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

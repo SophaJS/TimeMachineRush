@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://74hesg1liml8"]
+[gd_scene load_steps=6 format=3 uid="uid://74hesg1liml8"]
 
 [ext_resource type="Script" path="res://SceneFolder/game_over.gd" id="1_qmq0d"]
 [ext_resource type="Texture2D" uid="uid://dqjk6forrno0u" path="res://tzKyzs.png" id="2_xw1lf"]
 [ext_resource type="Texture2D" uid="uid://dkj3w4bhukhyl" path="res://picturetopeople.org-0276ba92a4bfca348ce43d20863f9158ae2f1c6c1e27e2d383.png" id="3_4n8mc"]
 [ext_resource type="Texture2D" uid="uid://du5ix023hacca" path="res://picturetopeople.org-3b09910ad37a02b3ba5f7086a27d5d6f741590fdaadddb8d9a.png" id="4_0eat6"]
 [ext_resource type="Texture2D" uid="uid://br142njkq5mlf" path="res://picturetopeople.org-6f8366f7d99613aa4f926a82bb927428dd51282b9d57985ac0.png" id="5_lgxe4"]
-[ext_resource type="Texture2D" uid="uid://c403ly7fi3w4n" path="res://picturetopeople.org-d682136ede4a9e102f4aebaff60ad39d321311ff2f639262cd.png" id="6_orou2"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -27,6 +26,7 @@ texture = ExtResource("2_xw1lf")
 color = Color(1, 0.901961, 0.764706, 1)
 
 [node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 366.0
 offset_top = 130.0
 offset_right = 928.0
@@ -52,22 +52,13 @@ offset_bottom = 432.0
 scale = Vector2(0.482963, 0.503938)
 texture = ExtResource("5_lgxe4")
 
-[node name="TextureRect5" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 488.0
-offset_top = 490.0
-offset_right = 778.0
-offset_bottom = 661.0
-scale = Vector2(0.699301, 0.505618)
-texture = ExtResource("6_orou2")
-
 [node name="Button" type="Button" parent="."]
-show_behind_parent = true
 layout_mode = 0
-offset_left = 470.0
-offset_top = 464.0
-offset_right = 478.0
-offset_bottom = 472.0
-scale = Vector2(29.139, 15.3903)
+offset_left = 467.0
+offset_top = 466.0
+offset_right = 542.0
+offset_bottom = 497.0
+scale = Vector2(3.02972, 3.003)
+text = "RESTART"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
