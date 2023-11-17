@@ -29,6 +29,7 @@ func _on_delete_pressed():
 	$Key_4.text = "_"
 	next = 1
 	$Passcode.text = "Passcode"
+	SoundEffects.playButton()
 
 func _on_button_pressed():
 	if next == 1:
@@ -40,7 +41,7 @@ func _on_button_pressed():
 	elif next == 4:
 		$Key_4.text = "1"
 	next = next+1
-
+	SoundEffects.playButton()
 
 func _on_button_2_pressed():
 	if next == 1:
@@ -52,6 +53,7 @@ func _on_button_2_pressed():
 	elif next == 4:
 		$Key_4.text = "2"
 	next = next+1.
+	SoundEffects.playButton()
 
 func _on_button_3_pressed():
 	if next == 1:
@@ -63,6 +65,7 @@ func _on_button_3_pressed():
 	elif next == 4:
 		$Key_4.text = "3"
 	next = next+1.
+	SoundEffects.playButton()
 
 
 func _on_button_4_pressed():
@@ -75,6 +78,7 @@ func _on_button_4_pressed():
 	elif next == 4:
 		$Key_4.text = "4"
 	next = next+1.
+	SoundEffects.playButton()
 
 
 func _on_button_5_pressed():
@@ -87,6 +91,7 @@ func _on_button_5_pressed():
 	elif next == 4:
 		$Key_4.text = "5"
 	next = next+1.
+	SoundEffects.playButton()
 
 
 func _on_button_6_pressed():
@@ -99,6 +104,7 @@ func _on_button_6_pressed():
 	elif next == 4:
 		$Key_4.text = "6"
 	next = next+1.
+	SoundEffects.playButton()
 
 
 func _on_button_7_pressed():
@@ -111,6 +117,7 @@ func _on_button_7_pressed():
 	elif next == 4:
 		$Key_4.text = "7"
 	next = next+1.
+	SoundEffects.playButton()
 
 
 func _on_button_8_pressed():
@@ -123,6 +130,7 @@ func _on_button_8_pressed():
 	elif next == 4:
 		$Key_4.text = "8"
 	next = next+1.
+	SoundEffects.playButton()
 
 
 
@@ -136,6 +144,7 @@ func _on_button_9_pressed():
 	elif next == 4:
 		$Key_4.text = "9"
 	next = next+1.
+	SoundEffects.playButton()
 
 
 
@@ -149,13 +158,14 @@ func _on_button_10_pressed():
 	elif next == 4:
 		$Key_4.text = "0"
 	next = next+1.
+	SoundEffects.playButton()
 
 
 func _on_button_11_pressed():
+	SoundEffects.playButton()
 	self.visible = false
 	$DisplayPasscode.visible = false
-
-
+	
 func _on_timer_timeout():
 	self.visible = false
 	$DisplayPasscode.visible = false

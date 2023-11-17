@@ -5,3 +5,17 @@ func playMusic():
 	
 func stopMusic():
 	$jam.stop()
+
+func playWin():
+	$win.play()
+	
+func stopWin():
+	$win.stop()
+
+func playLose():
+	$lose.play()
+	
+func stopLose():
+	$lose.stop()
+
+	

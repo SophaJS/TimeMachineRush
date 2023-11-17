@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://erebnaljv5gv"]
+
+[ext_resource type="Script" path="res://SoundEffects.gd" id="1_sl40r"]
+[ext_resource type="AudioStream" uid="uid://vkbdwfyfaua1" path="res://Music/jump.ogg" id="2_qhsaq"]
+[ext_resource type="AudioStream" uid="uid://byematpvbghwu" path="res://Music/papercode.ogg" id="3_apfvg"]
+[ext_resource type="AudioStream" uid="uid://dab5kw316n4cp" path="res://Music/car-light-switch-epic-stock-media-1-00-00.mp3" id="4_cy6mk"]
+
+[node name="SoundEffects" type="Node"]
+script = ExtResource("1_sl40r")
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_qhsaq")
+volume_db = 5.0
+bus = &"soundEffects"
+
+[node name="PaperCode" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_apfvg")
+volume_db = 15.0
+bus = &"soundEffects"
+
+[node name="buttons" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cy6mk")
+bus = &"soundEffects"

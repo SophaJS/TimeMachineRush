@@ -4,5 +4,7 @@ extends StaticBody2D
 
 func Display(value: bool)->void:
 	text.visible = value
+	if value == true:
+		SoundEffects.PaperPlay()
 	
 	

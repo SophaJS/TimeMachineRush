@@ -5,3 +5,5 @@ func playMusic():
 	
 func stopMusic():
 	$menu.stop()
+	
+

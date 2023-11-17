@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Music="*res://music.tscn"
 MenuMusic="*res://menu_music.tscn"
 SettingsMenu="*res://SceneFolder/settings_menu.tscn"
+SoundEffects="*res://sound_effects.tscn"
 
 [input]
 

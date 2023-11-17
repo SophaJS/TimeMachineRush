@@ -65,6 +65,14 @@ text = "Game Music"
 layout_mode = 2
 action_mode = 0
 
+[node name="Sound_Effects" type="Label" parent="TabContainer/SettingsMenu/settingsmenu"]
+layout_mode = 2
+text = "Sound Effects"
+
+[node name="SoundEffects" type="CheckButton" parent="TabContainer/SettingsMenu/settingsmenu"]
+layout_mode = 2
+action_mode = 0
+
 [node name="Button" type="Button" parent="."]
 top_level = true
 layout_mode = 0
@@ -77,4 +85,5 @@ text = "Back"
 
 [connection signal="toggled" from="TabContainer/SettingsMenu/settingsmenu/MenuMusic" to="." method="_on_menu_music_toggled"]
 [connection signal="toggled" from="TabContainer/SettingsMenu/settingsmenu/GameMusic" to="." method="_on_game_music_toggled"]
+[connection signal="toggled" from="TabContainer/SettingsMenu/settingsmenu/SoundEffects" to="." method="_on_sound_effects_toggled"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
